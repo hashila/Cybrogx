@@ -18,5 +18,15 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-}
 
+
+  // const config = {
+  //   apiKey: "AIzaSyB-0Zcia1IrqEzMn39qp-JrEaGeoON57-Y",
+  //   authDomain: "cybrogx-1543512333299.firebaseapp.com",
+  //   databaseURL: "https://cybrogx-1543512333299.firebaseio.com",
+  //   projectId: "cybrogx-1543512333299",
+  //   storageBucket: "cybrogx-1543512333299.appspot.com",
+  //   messagingSenderId: "1048992728209"
+  // };
+  // firebase.initializeApp(config);
+}
