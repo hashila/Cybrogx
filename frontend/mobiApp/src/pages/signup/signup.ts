@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+
+
 
 @IonicPage()
 @Component({
@@ -15,7 +14,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items: Observable<any[]>;
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,db: AngularFirestore) {
+
+    this.items = db.collection('items').valueChanges();
+
+
   }
 
   ionViewDidLoad() {

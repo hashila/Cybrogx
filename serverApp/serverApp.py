@@ -5,6 +5,18 @@ from tkinter import *
 import json
 import requests
 import pandas as pd
+import pyrebase
+'''
+#firebase db connection
+config = {
+    apiKey: "AIzaSyB-0Zcia1IrqEzMn39qp-JrEaGeoON57-Y",
+    authDomain: "cybrogx-1543512333299.firebaseapp.com",
+    databaseURL: "https://cybrogx-1543512333299.firebaseio.com",
+    projectId: "cybrogx-1543512333299",
+    storageBucket: "cybrogx-1543512333299.appspot.com",
+    messagingSenderId: "1048992728209"
+  }
+rebase = pyrebase.initialize_app(config)
 
 
 #API operations area
@@ -61,4 +73,3 @@ addKeywordBtn.pack()
 
 
 root.mainloop()
-'''
