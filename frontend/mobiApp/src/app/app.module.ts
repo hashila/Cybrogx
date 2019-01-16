@@ -10,10 +10,9 @@ import { SignupPage } from '../pages/signup/signup';
 import { UseraccountPage } from '../pages/useraccount/useraccount';
 import { HomewindowPage } from '../pages/homewindow/homewindow';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 
 
 const config = {
@@ -37,10 +36,7 @@ const config = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
-
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
