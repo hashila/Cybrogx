@@ -11,6 +11,20 @@ import { SignupPage } from '../pages/signup/signup';
 import { UseraccountPage } from '../pages/useraccount/useraccount';
 import { HomewindowPage } from '../pages/homewindow/homewindow';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+
+
+const config = {
+    apiKey: "AIzaSyB-0Zcia1IrqEzMn39qp-JrEaGeoON57-Y",
+    authDomain: "cybrogx-1543512333299.firebaseapp.com",
+    databaseURL: "https://cybrogx-1543512333299.firebaseio.com",
+    projectId: "cybrogx-1543512333299",
+    storageBucket: "cybrogx-1543512333299.appspot.com",
+    messagingSenderId: "1048992728209"
+  };
+
 @NgModule({
   declarations: [
     MyApp,
@@ -22,7 +36,9 @@ import { HomewindowPage } from '../pages/homewindow/homewindow';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(config),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -14,20 +14,20 @@
 
     <ion-item>
       <ion-label floating>User Name</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="uNametxt" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Full Name</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="fNametxt"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Address</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="addresstxt"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="passwordtxt"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Re-enter Password</ion-label>
@@ -37,7 +37,7 @@
   </ion-list>
 
 
-<button ion-button block color="secondary">Register</button>
+<button ion-button block color="secondary" (click)="register()">Register</button>
 
 
 
