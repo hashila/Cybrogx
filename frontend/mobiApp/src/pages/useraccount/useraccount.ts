@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomewindowPage } from '../homewindow/homewindow';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 
 @IonicPage()
@@ -10,11 +11,14 @@ import { HomewindowPage } from '../homewindow/homewindow';
 })
 export class UseraccountPage {
 
-  uName :String;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.uName = this.navParams.get('uName');
 
+  constructor(public navCtrl: NavController, public navParams: NavParams,afd :AngularFireDatabase) {
+    var uName :string;
+    var fullname :string;
+    uName = this.navParams.get('data');
+    console.log(uName);
+    getProfileInfo(uName);
   }
 
   ionViewDidLoad() {
@@ -22,6 +26,14 @@ export class UseraccountPage {
   }
   showHome(){
     this.navCtrl.push(HomewindowPage);
+  }
+
+  getProfileInfo(name :string){
+    this.afd.list('/profile').valueChanges().subscribe(
+      data => {
+        console.log(JSON.stringify(data));
+      }
+    );
   }
 
 }
