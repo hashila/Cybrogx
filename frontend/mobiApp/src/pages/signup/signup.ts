@@ -21,7 +21,6 @@ export class SignupPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public db: AngularFireDatabase) {
 
 
-
   }
 
   ionViewDidLoad() {

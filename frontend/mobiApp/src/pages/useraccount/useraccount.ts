@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomewindowPage } from '../homewindow/homewindow';
-/**
- * Generated class for the UseraccountPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -15,7 +10,11 @@ import { HomewindowPage } from '../homewindow/homewindow';
 })
 export class UseraccountPage {
 
+  uName :String;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.uName = this.navParams.get('uName');
+
   }
 
   ionViewDidLoad() {
