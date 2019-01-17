@@ -12,10 +12,10 @@ apikey = "AIzaSyBDR0vmhTIlG7UntsiN0MrUjSTDcwatB6Q"
 cx = "003540993553648637127:x-4dcla6a9g"
 
 url = "https://www.googleapis.com/customsearch/v1"
-parameters = {"q":"halloween","cx":cx,"key":apikey}
+parameters = {"q":"Damith","cx":cx,"key":apikey}
 page = requests.request("GET", url, params=parameters)
 results = json.loads(page.text)
-print(results["items"][0])
+print(results["items"])
 
 
 
@@ -27,9 +27,8 @@ print(results["items"][0])
 
 
 
-
 #button function area of the project
-'''
+
 def startBtnAction():
     print("start button works well.....")
 
@@ -61,4 +60,3 @@ addKeywordBtn.pack()
 
 
 root.mainloop()
-'''
