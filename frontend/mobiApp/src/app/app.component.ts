@@ -3,6 +3,10 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+
+
+
 import { HomePage } from '../pages/home/home';
 @Component({
   templateUrl: 'app.html'
@@ -10,7 +14,11 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   rootPage:any = HomePage;
 
+
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+
+
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -20,13 +28,4 @@ export class MyApp {
   }
 
 
-  // const config = {
-  //   apiKey: "AIzaSyB-0Zcia1IrqEzMn39qp-JrEaGeoON57-Y",
-  //   authDomain: "cybrogx-1543512333299.firebaseapp.com",
-  //   databaseURL: "https://cybrogx-1543512333299.firebaseio.com",
-  //   projectId: "cybrogx-1543512333299",
-  //   storageBucket: "cybrogx-1543512333299.appspot.com",
-  //   messagingSenderId: "1048992728209"
-  // };
-  // firebase.initializeApp(config);
 }

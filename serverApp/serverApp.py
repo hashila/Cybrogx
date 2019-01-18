@@ -5,6 +5,18 @@ from tkinter import *
 import json
 import requests
 import pandas as pd
+import pyrebase
+'''
+#firebase db connection
+config = {
+    apiKey: "AIzaSyB-0Zcia1IrqEzMn39qp-JrEaGeoON57-Y",
+    authDomain: "cybrogx-1543512333299.firebaseapp.com",
+    databaseURL: "https://cybrogx-1543512333299.firebaseio.com",
+    projectId: "cybrogx-1543512333299",
+    storageBucket: "cybrogx-1543512333299.appspot.com",
+    messagingSenderId: "1048992728209"
+  }
+rebase = pyrebase.initialize_app(config)
 
 
 #API operations area
@@ -12,10 +24,10 @@ apikey = "AIzaSyBDR0vmhTIlG7UntsiN0MrUjSTDcwatB6Q"
 cx = "003540993553648637127:x-4dcla6a9g"
 
 url = "https://www.googleapis.com/customsearch/v1"
-parameters = {"q":"halloween","cx":cx,"key":apikey}
+parameters = {"q":"Damith","cx":cx,"key":apikey}
 page = requests.request("GET", url, params=parameters)
 results = json.loads(page.text)
-print(results["items"][0])
+print(results["items"])
 
 
 
@@ -27,9 +39,8 @@ print(results["items"][0])
 
 
 
-
 #button function area of the project
-'''
+
 def startBtnAction():
     print("start button works well.....")
 
@@ -61,4 +72,3 @@ addKeywordBtn.pack()
 
 
 root.mainloop()
-'''

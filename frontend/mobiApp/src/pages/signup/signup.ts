@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
+export interface Item { name: string; }
+
 
 @IonicPage()
 @Component({
@@ -15,11 +13,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  uNametxt :string;
+  fNametxt :string;
+  passwordtxt :string;
+  addresstxt :string
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public db: AngularFireDatabase) {
+
+
   }
 
   ionViewDidLoad() {
+
     console.log('ionViewDidLoad SignupPage');
+  }
+
+  register(){
+
+    this.db.list('/profile').push({
+
+      username: this.uNametxt,
+      fullName: this.fNametxt,
+      password: this.passwordtxt,
+      address: this.addresstxt
+
+    });
+
   }
 
 }

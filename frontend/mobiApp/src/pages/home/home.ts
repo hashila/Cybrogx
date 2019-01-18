@@ -8,7 +8,7 @@ import { UseraccountPage } from '../useraccount/useraccount';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  
   constructor(public navCtrl: NavController) {
 
   }
@@ -19,9 +19,9 @@ export class HomePage {
 
   }
 
-  login(){
-
-    this.navCtrl.push(UseraccountPage);
+  login(name: string){
+    this.navCtrl.push(UseraccountPage,{data:name});
+    console.log(name);
 
   }
 
