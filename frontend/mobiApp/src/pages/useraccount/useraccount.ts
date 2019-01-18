@@ -11,6 +11,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 })
 export class UseraccountPage {
 
+  person: FirebaseListObservable<any[]>;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,afd :AngularFireDatabase) {
@@ -18,7 +19,9 @@ export class UseraccountPage {
     var fullname :string;
     uName = this.navParams.get('data');
     console.log(uName);
-    getProfileInfo(uName);
+
+
+    //this.getProfileInfo(uName);
   }
 
   ionViewDidLoad() {
