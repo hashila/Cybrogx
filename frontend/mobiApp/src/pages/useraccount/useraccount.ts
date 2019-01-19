@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomewindowPage } from '../homewindow/homewindow';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
-import { profileList } from '../profileList/profileList';
 
 @IonicPage()
 @Component({
@@ -12,7 +11,7 @@ import { profileList } from '../profileList/profileList';
 })
 export class UseraccountPage {
 
-  person: FirebaseListObservable<profileList[]>;
+  person: FirebaseListObservable<any[]>;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,afd :AngularFireDatabase) {
