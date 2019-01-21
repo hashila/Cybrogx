@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { UseraccountPage } from '../useraccount/useraccount';
+
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 export interface Item { name: string; }
@@ -38,6 +40,7 @@ export class SignupPage {
       address: this.addresstxt
 
     });
+    this.navCtrl.push(UseraccountPage,{data:this.uNametxt});
 
   }
 

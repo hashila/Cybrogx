@@ -11,30 +11,50 @@
 <ion-content padding>
 
 
-
-
-
-
-
   <ul style="list-style: none;">
   <li *ngFor="let user of users | async">
 
-  <ion-card>
-    <ion-card-header>
-    <h1>
-      {{ user.username }}
-    </h1>
-    </ion-card-header>
-    <ion-card-content>
-      <h3>
-        {{ user.fullName }}
-        <br>
-        <br>
-        {{ user.address }}
-      </h3>
 
-    </ion-card-content>
-  </ion-card>
+
+
+
+
+<ion-grid>
+<ion-row>
+      <ion-col col-12>
+
+              <h6>User Name :  </h6>
+
+     </ion-col>
+      <ion-col col-12>
+
+        <b><h1>{{ user.username }} <ion-icon name="person"></ion-icon></h1></b>
+
+     </ion-col>
+</ion-row>
+
+
+<ion-row>
+      <ion-col col-6>
+                    Full Name :
+      </ion-col>
+    <ion-col col-6>
+                    {{ user.fullName }}
+       </ion-col>
+</ion-row>
+
+
+<ion-row>
+    <ion-col col-6>
+                Address :
+      </ion-col>
+    <ion-col col-6>
+                {{ user.address }}
+    </ion-col>
+
+
+</ion-row>
+</ion-grid>
 </li>
 </ul>
 
