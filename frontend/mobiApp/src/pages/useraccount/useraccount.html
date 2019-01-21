@@ -10,20 +10,19 @@
 
 <ion-content padding>
 
-<h1>User Name</h1>
-<br>
-<p>(logo)</p>
-<br>
-<br>
-<h3>Description</h3>
-<div class="cntP">
+<p>{{ user.address | json }}</p>
 
-  <p>Lorem ipsum dolor sit amet,
-    consectetur adipisicing elit, sed do eiusmod tempor incididunt
-     ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-    </p>
-</div>
+
+  <!-- <div class="container">
+
+    <ul>
+    <li *ngFor="let user of users | async">
+         {{ user.address | json }}
+      </li>
+    </ul>
+  </div> -->
+
+
 <button ion-button block color="dark" (click)="showHome()">show home</button>
 
 

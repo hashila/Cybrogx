@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomewindowPage } from '../homewindow/homewindow';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
+import { user } from './user';
 
 @IonicPage()
 @Component({
@@ -11,7 +12,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 })
 export class UseraccountPage {
 
-  person: FirebaseListObservable<any[]>;
+   users:FirebaseListObservable<any>;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,afd :AngularFireDatabase) {
@@ -19,9 +20,9 @@ export class UseraccountPage {
     var fullname :string;
     uName = this.navParams.get('data');
     console.log(uName);
+    this.users = afd.list('/profile/'+this.uName).valueChanges();
 
-
-    //this.getProfileInfo(uName);
+    //this.getProfileInfo();
   }
 
   ionViewDidLoad() {
@@ -31,7 +32,7 @@ export class UseraccountPage {
     this.navCtrl.push(HomewindowPage);
   }
 
-  getProfileInfo(name :string){
+  getProfileInfo(){
     this.afd.list('/profile').valueChanges().subscribe(
       data => {
         console.log(JSON.stringify(data));

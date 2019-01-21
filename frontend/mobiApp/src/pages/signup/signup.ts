@@ -30,7 +30,7 @@ export class SignupPage {
 
   register(){
 
-    this.db.list('/profile').push({
+    this.db.list('/profile/'+this.uNametxt).push({
 
       username: this.uNametxt,
       fullName: this.fNametxt,
@@ -40,5 +40,6 @@ export class SignupPage {
     });
 
   }
+
 
 }
