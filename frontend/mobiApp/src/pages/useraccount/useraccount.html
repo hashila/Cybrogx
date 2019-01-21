@@ -10,20 +10,41 @@
 
 <ion-content padding>
 
-<!-- <p>{{ user.address | json }}</p> -->
 
 
-  <div class="container">
-
-    <ul>
-    <li *ngFor="let user of users | async">
-         {{ user | json }}
-      </li>
-    </ul>
-  </div>
 
 
-<button ion-button block color="dark" (click)="showHome()">show home</button>
+
+
+  <ul style="list-style: none;">
+  <li *ngFor="let user of users | async">
+
+  <ion-card>
+    <ion-card-header>
+    <h1>
+      {{ user.username }}
+    </h1>
+    </ion-card-header>
+    <ion-card-content>
+      <h3>
+        {{ user.fullName }}
+        <br>
+        <br>
+        {{ user.address }}
+      </h3>
+
+    </ion-card-content>
+  </ion-card>
+</li>
+</ul>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title><button ion-button block color="dark" (click)="showHome()">show home</button>
+</ion-title>
+  </ion-toolbar>
+</ion-footer>
+
 
 
 </ion-content>
