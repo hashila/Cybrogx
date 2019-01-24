@@ -12,8 +12,8 @@ from firebase import firebase
 firebase = firebase.FirebaseApplication('https://cybrogx-1543512333299.firebaseio.com/', None)
 
 
-# firebase CRUD operations area
-'''
+########################################## firebase CRUD operations area #########################################
+
 result = firebase.get('/profile', None)
 data = {
 
@@ -23,12 +23,32 @@ data = {
 }
 result = firebase.post('/news/',data)
 print(result)
-'''
+
+
+# send bad words to the database
+def sendExtreme():
+    extreme ={
+
+    }
+    firebase.post('/badWords/extreme/',extreme)
+
+def sendHigh():
+    high = {
+
+    }
+    firebase.post('/badWords/high/',high)
+
+def sendBad():
+    bad = {
+
+    }
+    firebase.post('/badWords/bad/',bad)
+
+######################################################################################################
 
 
 
-
-#API operations area
+######################################## API operations area ##########################################
 '''
 apikey = "AIzaSyBDR0vmhTIlG7UntsiN0MrUjSTDcwatB6Q"
 cx = "003540993553648637127:x-4dcla6a9g"
@@ -40,17 +60,19 @@ results = json.loads(page.text)
 print(results["items"])
 '''
 
+######################################################################################################
 
 
-#webscraping area of the project
+########################################## webscraping area of the project ################################
 '''
 html = urlopen("https://www.javatpoint.com/")
 bsObj = BeautifulSoup(html,'lxml')
 print(bsObj.h1)
 '''
+######################################################################################################
 
 
-#button function area of the project
+######################################## button function area of the project ####################################
 '''
 def startBtnAction():
     print("start button works well.....")
@@ -62,10 +84,11 @@ def addKeywordBtnAction():
     print("add keywords button works well.....")
 '''
 
+######################################################################################################
 
 
 
-#interface Area of the project
+################################################ interface Area of the project ##############################
 '''
 root = Tk()
 
@@ -85,3 +108,4 @@ addKeywordBtn.pack()
 
 root.mainloop()
 '''
+######################################################################################################
