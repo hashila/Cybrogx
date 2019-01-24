@@ -5,23 +5,25 @@ from tkinter import *
 import json
 import requests
 import pandas as pd
-import pyrebase
+from firebase import firebase
 
 #firebase db connection
-config = {
-    apiKey: "AIzaSyB-0Zcia1IrqEzMn39qp-JrEaGeoON57-Y",
-    authDomain: "cybrogx-1543512333299.firebaseapp.com",
-    databaseURL: "https://cybrogx-1543512333299.firebaseio.com",
-    projectId: "cybrogx-1543512333299",
-    storageBucket: "cybrogx-1543512333299.appspot.com",
-    messagingSenderId: "1048992728209"
-  }
-rebase = pyrebase.initialize_app(config)
+
+firebase = firebase.FirebaseApplication('https://cybrogx-1543512333299.firebaseio.com/', None)
 
 
-
+# firebase CRUD operations area
 '''
+result = firebase.get('/profile', None)
+result = firebase.post('/python-sample-ed7f7/Students/',data)
+print(result)
+'''
+
+
+
+
 #API operations area
+'''
 apikey = "AIzaSyBDR0vmhTIlG7UntsiN0MrUjSTDcwatB6Q"
 cx = "003540993553648637127:x-4dcla6a9g"
 
@@ -30,19 +32,20 @@ parameters = {"q":"Damith","cx":cx,"key":apikey}
 page = requests.request("GET", url, params=parameters)
 results = json.loads(page.text)
 print(results["items"])
-
+'''
 
 
 
 #webscraping area of the project
-# html = urlopen("https://www.javatpoint.com/")
-# bsObj = BeautifulSoup(html,'lxml')
-# print(bsObj.h1)
-
+'''
+html = urlopen("https://www.javatpoint.com/")
+bsObj = BeautifulSoup(html,'lxml')
+print(bsObj.h1)
+'''
 
 
 #button function area of the project
-
+'''
 def startBtnAction():
     print("start button works well.....")
 
@@ -51,12 +54,13 @@ def stopBtnAction():
 
 def addKeywordBtnAction():
     print("add keywords button works well.....")
-
+'''
 
 
 
 
 #interface Area of the project
+'''
 root = Tk()
 
 topFrame = Frame(root)
