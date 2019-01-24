@@ -15,7 +15,13 @@ firebase = firebase.FirebaseApplication('https://cybrogx-1543512333299.firebasei
 # firebase CRUD operations area
 '''
 result = firebase.get('/profile', None)
-result = firebase.post('/python-sample-ed7f7/Students/',data)
+data = {
+
+# data that need to pass to the newsfeeds
+# url and sample text with header of the article
+
+}
+result = firebase.post('/news/',data)
 print(result)
 '''
 
