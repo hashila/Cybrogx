@@ -8,12 +8,12 @@ import pandas as pd
 from firebase import firebase
 
 #firebase db connection
-
+'''
 firebase = firebase.FirebaseApplication('https://cybrogx-1543512333299.firebaseio.com/', None)
-
+'''
 
 ########################################## firebase CRUD operations area #########################################
-
+'''
 result = firebase.get('/profile', None)
 data = {
 
@@ -43,7 +43,7 @@ def sendBad():
 
     }
     firebase.post('/badWords/bad/',bad)
-
+'''
 ######################################################################################################
 
 
@@ -64,11 +64,11 @@ print(results["items"])
 
 
 ########################################## webscraping area of the project ################################
-'''
+
 html = urlopen("https://www.javatpoint.com/")
-bsObj = BeautifulSoup(html,'lxml')
-print(bsObj.h1)
-'''
+bsObj = BeautifulSoup(html.read(),'html.parser')
+print(bsObj.p)
+
 ######################################################################################################
 
 
@@ -88,7 +88,7 @@ def addKeywordBtnAction():
 
 
 
-################################################ interface Area of the project ##############################
+######################################### interface Area of the project ##############################
 '''
 root = Tk()
 
