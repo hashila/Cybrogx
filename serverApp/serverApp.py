@@ -33,6 +33,10 @@ def getFullNameList():
         fullNameList.append(ss)
     return fullNameList # this list use for the search api to search about the person on the internet
 
+extremeList = firebase.get('/badWords/extreme',None) # list of extreme bad words
+highList = firebase.get('/badWords/high',None) # list of high bad words
+badList = firebase.get('/badWords/bad',None) # list of normal bad words
+
 
 
 '''
@@ -55,7 +59,6 @@ def sendBad():
     firebase.post('/badWords/bad/',bad)
 '''
 ######################################################################################################
-
 
 
 ######################################## API operations area ##########################################
