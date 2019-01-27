@@ -6,14 +6,17 @@ import json
 import requests
 import pandas as pd
 from firebase import firebase
+from lib.google_search_results import GoogleSearchResults
 
-#firebase db connection
+# from search_google import api
+
+#####firebase db connection
 
 firebase = firebase.FirebaseApplication('https://cybrogx-1543512333299.firebaseio.com/', None)
 
 
 ########################################## firebase CRUD operations area #########################################
-
+'''
 def fullNameOfUser(username):
     userName = username
     fireUser = firebase.get('/profile/'+userName,None)
@@ -39,7 +42,7 @@ badList = firebase.get('/badWords/bad',None) # list of normal bad words
 
 
 
-'''
+
 def sendExtreme():
     extreme ={
 
@@ -62,16 +65,26 @@ def sendBad():
 
 
 ######################################## API operations area ##########################################
-'''
-apikey = "AIzaSyBDR0vmhTIlG7UntsiN0MrUjSTDcwatB6Q"
-cx = "003540993553648637127:x-4dcla6a9g"
 
-url = "https://www.googleapis.com/customsearch/v1"
-parameters = {"q":"Damith","cx":cx,"key":apikey}
-page = requests.request("GET", url, params=parameters)
-results = json.loads(page.text)
-print(results["items"])
-'''
+response = GoogleSearch().search("something")
+for result in response.results:
+    print("Title: " + result.title)
+    print("Content: " + result.getText())
+
+
+# apikey = "AIzaSyBDR0vmhTIlG7UntsiN0MrUjSTDcwatB6Q"
+# cx = "003540993553648637127:x-4dcla6a9g"
+# googleurl = "https://www.googleapis.com/customsearch/v1"
+#
+# parameters = {"q":"Mahinda","cx":cx,"key":apikey}
+# page = requests.request("GET", googleurl, params=parameters)
+# results = json.loads(page.text)
+# print(results["items"])
+# lengthofitems = len(results["items"])
+# for i in range(lengthofitems):
+#     print(results["items"][i]["link"])
+
+
 
 ######################################################################################################
 
