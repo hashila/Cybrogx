@@ -8,24 +8,34 @@ import pandas as pd
 from firebase import firebase
 
 #firebase db connection
-'''
+
 firebase = firebase.FirebaseApplication('https://cybrogx-1543512333299.firebaseio.com/', None)
-'''
+
 
 ########################################## firebase CRUD operations area #########################################
+
+def fullNameOfUser(username):
+    userName = username
+    fireUser = firebase.get('/profile/'+userName,None)
+    userKeyDicList = fireUser.keys()
+    keyValue = ""
+    for i in userKeyDicList:
+        keyValue = i
+    fullName = firebase.get('/profile/'+userName+'/'+keyValue, 'fullName')
+    return fullName # returns the full name of the given user name
+
+def getFullNameList():
+    userinfo = firebase.get('/profile/',None)
+    keyList  = userinfo.keys()
+    fullNameList = list()
+    for k in keyList:
+        ss = fullNameOfUser(k)
+        fullNameList.append(ss)
+    return fullNameList # this list use for the search api to search about the person on the internet
+
+
+
 '''
-result = firebase.get('/profile', None)
-data = {
-
-# data that need to pass to the newsfeeds
-# url and sample text with header of the article
-
-}
-result = firebase.post('/news/',data)
-print(result)
-
-
-# send bad words to the database
 def sendExtreme():
     extreme ={
 
@@ -64,11 +74,11 @@ print(results["items"])
 
 
 ########################################## webscraping area of the project ################################
-
+'''
 html = urlopen("https://www.javatpoint.com/")
 bsObj = BeautifulSoup(html.read(),'html.parser')
 print(bsObj.p)
-
+'''
 ######################################################################################################
 
 
