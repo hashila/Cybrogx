@@ -6,7 +6,7 @@ import json
 import requests
 import pandas as pd
 from firebase import firebase
-from lib.google_search_results import GoogleSearchResults
+# from lib.google_search_results import GoogleSearchResults
 
 # from search_google import api
 
@@ -66,23 +66,18 @@ def sendBad():
 
 ######################################## API operations area ##########################################
 
-response = GoogleSearch().search("something")
-for result in response.results:
-    print("Title: " + result.title)
-    print("Content: " + result.getText())
 
+apikey = "AIzaSyBDR0vmhTIlG7UntsiN0MrUjSTDcwatB6Q"
+cx = "003540993553648637127:x-4dcla6a9g"
+googleurl = "https://www.googleapis.com/customsearch/v1"
 
-# apikey = "AIzaSyBDR0vmhTIlG7UntsiN0MrUjSTDcwatB6Q"
-# cx = "003540993553648637127:x-4dcla6a9g"
-# googleurl = "https://www.googleapis.com/customsearch/v1"
-#
-# parameters = {"q":"Mahinda","cx":cx,"key":apikey}
-# page = requests.request("GET", googleurl, params=parameters)
-# results = json.loads(page.text)
-# print(results["items"])
-# lengthofitems = len(results["items"])
-# for i in range(lengthofitems):
-#     print(results["items"][i]["link"])
+parameters = {"q":"Mahinda","cx":cx,"key":apikey}
+page = requests.request("GET", googleurl, params=parameters)
+results = json.loads(page.text)
+
+lengthofitems = len(results["items"])
+for i in range(lengthofitems):
+    print(results["items"][i]["link"])
 
 
 
