@@ -10,4 +10,65 @@
 
 <ion-content padding>
 
+
+
+
+
+  <ul style="list-style: none;">
+  <li *ngFor="let user of users | async">
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Bad Content</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+
+        <ion-grid>
+
+
+
+        <ion-row>
+          <ion-col col-6>
+                        url :
+          </ion-col>
+          <ion-col col-6>
+                      
+          </ion-col>
+        <ion-col col-12>
+                        {{ user.url }}
+           </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+        <ion-col col-6>
+                    howbad :
+          </ion-col>
+        <ion-col col-6>
+                    {{ user.howbad }}
+        </ion-col>
+
+
+        </ion-row>
+        </ion-grid>
+
+
+
+
+
+      </ion-card-content>
+    </ion-card>
+
+
+  </li>
+  </ul>
+
+
+
+
+
+
+
 </ion-content>

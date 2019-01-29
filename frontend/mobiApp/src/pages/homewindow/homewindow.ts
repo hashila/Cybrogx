@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
 
 /**
  * Generated class for the HomewindowPage page.
@@ -15,7 +17,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomewindowPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  users :FirebaseListObservable<any>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,afd :AngularFireDatabase) {
+    var uName :string;
+    var fullname :string;
+    uName = this.navParams.get('data');
+    console.log(uName);
+    this.users = afd.list('/news/'+ uName).valueChanges();
+
+
   }
 
   ionViewDidLoad() {

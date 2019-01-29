@@ -5,6 +5,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-useraccount',
@@ -13,15 +14,19 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 export class UseraccountPage {
 
    users :FirebaseListObservable<any>;
-
+   name:string;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,afd :AngularFireDatabase) {
-    var uName$ :string;
+    var uName :string;
     var fullname :string;
-    uName$ = this.navParams.get('data');
-    console.log(uName$);
-    this.users = afd.list('/profile/'+uName$).valueChanges();
+
+    uName = this.navParams.get('data');
+
+
+    this.name = uName;
+    console.log(this.name);
+    this.users = afd.list('/profile/'+ uName).valueChanges();
 
   }
 
@@ -29,9 +34,9 @@ export class UseraccountPage {
     console.log('ionViewDidLoad UseraccountPage');
   }
   showHome(){
-    this.navCtrl.push(HomewindowPage);
+    this.navCtrl.push(HomewindowPage,{data:this.name});
   }
 
-  
+
 
 }
