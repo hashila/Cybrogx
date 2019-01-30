@@ -23,36 +23,33 @@ def userNameList():
 
 
 
+extremeList1 = firebase.get('/badWords/extreme',None) # list of extreme bad words
+highList1 = firebase.get('/badWords/high',None) # list of high bad words
+badList1 = firebase.get('/badWords/bad',None) # list of normal bad words
+
+exx = extremeList1.keys()
+hix = highList1.keys()
+bax = badList1.keys()
+
+extremeList = list()
+highList = list()
+badList = list()
+
+for x in exx:
+    f = firebase.get('/badWords/extreme',x)
+    extremeList.append(f[1])
+for x in hix:
+    f = firebase.get('/badWords/high',x)
+    highList.append(f[1])
+
+for x in bax:
+    f = firebase.get('/badWords/bad',x)
+    badList.append(f[1])
+
+for dddd in extremeList:
+    print(dddd)
 
 
-
-
-
-
-extremeList = firebase.get('/badWords/extreme',None) # list of extreme bad words
-highList = firebase.get('/badWords/high',None) # list of high bad words
-badList = firebase.get('/badWords/bad',None) # list of normal bad words
-
-
-
-
-def sendExtreme():
-    extreme ={
-
-    }
-    firebase.post('/badWords/extreme/',extreme)
-
-def sendHigh():
-    high = {
-
-    }
-    firebase.post('/badWords/high/',high)
-
-def sendBad():
-    bad = {
-
-    }
-    firebase.post('/badWords/bad/',bad)
 
 ######################################################################################################
 
@@ -115,7 +112,7 @@ def mainAnnalyser(stng):
             continue
         else:
             countb = countb + stng.count(badword)
-    fullcnt = (countex*10) + (counth*5) + countb
+    fullcnt = (countex*1000) + (counth*200) + countb
     howbad = (fullcnt/len(stng.split(" ")))*100
     return howbad
 
@@ -153,29 +150,92 @@ def doItForAllUsers():
         doItForUser(username)
     print("done")
 
-doItForAllUsers()
+# doItForAllUsers()
 
 
 #################################################################################################################
-
 ######################################## button function area of the project ####################################
 
 def startBtnAction():
     doItForAllUsers()
+    print("start btn works well")
 
 def stopBtnAction():
     print("stop button works well.....")
 
 def addKeywordBtnAction():
-    print("add keywords button works well.....")
+    global root
+    root.destroy()
+
+    window = Tk()
 
 
+    T = Text(window, height=2, width=30)
+    k = Text(window, height=2, width=30)
+    n = Text(window, height=2, width=30)
+
+    T.insert(END, "")
+    k.insert(END, "")
+    n.insert(END, "")
+
+    hbtn = Button(window,text="highly bad word",fg="black",bg="yellow",command=lambda:sendHigh(k),height=1,width=20)
+    exbtn = Button(window,text="Extremely bad word",bg="red",fg="black",command=lambda:sendExtreme(n),height=1,width=20)
+    nbtn = Button(window,text="Normal bad word",bg="blue",fg="black",command=lambda:sendBad(T),height=1,width=20)
+
+    T.pack()
+    nbtn.pack(fill=X)
+    k.pack()
+    hbtn.pack(fill=X)
+    n.pack()
+    exbtn.pack(fill=X)
+
+
+    window.mainloop()
+
+########################################################################################################################
+################ send bad words ##########################
+
+
+def sendExtreme(n):
+    input = n.get('1.0', END)
+    inputlist = input.split(",")
+
+    for word in inputlist:
+
+        extreme ={
+            "1" : word
+        }
+
+        firebase.post('/badWords/extreme/',extreme)
+    n.delete('1.0', END)
+
+def sendHigh(k):
+    input = k.get('1.0', END)
+    inputlist = input.split(",")
+    for word in inputlist:
+
+        high ={
+            "1" : word
+        }
+
+        firebase.post('/badWords/high/',high)
+    k.delete('1.0', END)
+
+def sendBad(T):
+    input = T.get('1.0', END)
+    inputlist = input.split(",")
+
+    for word in inputlist:
+
+        bad ={
+            "1" : word
+        }
+
+        firebase.post('/badWords/bad/',bad)
+    T.delete('1.0', END)
 ######################################################################################################
-
-
-
 ######################################### interface Area of the project ##############################
-''''
+
 root = Tk()
 
 topFrame = Frame(root)
@@ -193,5 +253,5 @@ addKeywordBtn.pack()
 
 
 root.mainloop()
-'''
+
 ######################################################################################################
