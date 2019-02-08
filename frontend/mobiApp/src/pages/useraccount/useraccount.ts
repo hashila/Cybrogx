@@ -5,7 +5,6 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 
 
 
-
 @IonicPage()
 @Component({
   selector: 'page-useraccount',

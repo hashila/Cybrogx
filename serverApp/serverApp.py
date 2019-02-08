@@ -11,7 +11,7 @@ from firebase import firebase
 # from search_google import api
 
 #####firebase db connection
-
+'''
 firebase = firebase.FirebaseApplication('https://cybrogx-1543512333299.firebaseio.com/', None)
 
 
@@ -46,8 +46,7 @@ for x in bax:
     f = firebase.get('/badWords/bad',x)
     badList.append(f[1])
 
-for dddd in extremeList:
-    print(dddd)
+
 
 
 
@@ -82,7 +81,6 @@ def search(commonName):
 
 def scraper(url):
     page = requests.get(url)
-    # html = urlopen(url)
     bsObj = BeautifulSoup(page.content,'html.parser')
     return str(bsObj.body)
 
@@ -125,7 +123,10 @@ def mainAnnalyser(stng):
 def postResult(fullName,userName):
     searchList = search(fullName)
     for url in searchList:
-        stng = scraper(url)
+        try:
+            stng = scraper(url)
+        except requests.exceptions.RequestException as e:  # This is the correct syntax
+            print(e)
         howbadinweb = mainAnnalyser(stng)
         content={
             "url" : url,
@@ -147,24 +148,32 @@ def doItForUser(username):
 def doItForAllUsers():
     getuserNameList = userNameList()
     for username in getuserNameList:
-        doItForUser(username)
-    print("done")
+        try:
+            doItForUser(username)
+        except KeyError:
+            print("key error")
 
+    print("done")
+'''
 # doItForAllUsers()
 
 
 #################################################################################################################
 ######################################## button function area of the project ####################################
+def goback(window):#back function
+    window.destroy()
+    interfaceFunc()
+
 
 def startBtnAction():
-    doItForAllUsers()
+    # doItForAllUsers()
     print("start btn works well")
 
 def stopBtnAction():
     print("stop button works well.....")
 
-def addKeywordBtnAction():
-    global root
+def addKeywordBtnAction(root):
+    # global root
     root.destroy()
 
     window = Tk()
@@ -181,6 +190,7 @@ def addKeywordBtnAction():
     hbtn = Button(window,text="highly bad word",fg="black",bg="yellow",command=lambda:sendHigh(k),height=1,width=20)
     exbtn = Button(window,text="Extremely bad word",bg="red",fg="black",command=lambda:sendExtreme(n),height=1,width=20)
     nbtn = Button(window,text="Normal bad word",bg="blue",fg="black",command=lambda:sendBad(T),height=1,width=20)
+    backbtn = Button(window,text="BACK",bg="purple",fg="white",command=lambda:goback(window),height=1,width=20)
 
     T.pack()
     nbtn.pack(fill=X)
@@ -188,7 +198,7 @@ def addKeywordBtnAction():
     hbtn.pack(fill=X)
     n.pack()
     exbtn.pack(fill=X)
-
+    backbtn.pack(fill=X)
 
     window.mainloop()
 
@@ -197,61 +207,74 @@ def addKeywordBtnAction():
 
 
 def sendExtreme(n):
-    input = n.get('1.0', END)
-    inputlist = input.split(",")
+    print("sendex")
+    # input = n.get('1.0', END)
+    # inputlist = input.split(",")
+    #
+    # for word in inputlist:
+    #
+    #     extreme ={
+    #         "1" : word
+    #     }
+    #
+    #     firebase.post('/badWords/extreme/',extreme)
+    # n.delete('1.0', END)
 
-    for word in inputlist:
-
-        extreme ={
-            "1" : word
-        }
-
-        firebase.post('/badWords/extreme/',extreme)
-    n.delete('1.0', END)
 
 def sendHigh(k):
-    input = k.get('1.0', END)
-    inputlist = input.split(",")
-    for word in inputlist:
+    print("sendh")
+    # input = k.get('1.0', END)
+    # inputlist = input.split(",")
+    # for word in inputlist:
+    #
+    #     high ={
+    #         "1" : word
+    #     }
+    #
+    #     firebase.post('/badWords/high/',high)
+    # k.delete('1.0', END)
 
-        high ={
-            "1" : word
-        }
-
-        firebase.post('/badWords/high/',high)
-    k.delete('1.0', END)
 
 def sendBad(T):
-    input = T.get('1.0', END)
-    inputlist = input.split(",")
+    print("sendex")
+    # input = T.get('1.0', END)
+    # inputlist = input.split(",")
+    #
+    # for word in inputlist:
+    #
+    #     bad ={
+    #         "1" : word
+    #     }
+    #
+    #     firebase.post('/badWords/bad/',bad)
+    # T.delete('1.0', END)
 
-    for word in inputlist:
-
-        bad ={
-            "1" : word
-        }
-
-        firebase.post('/badWords/bad/',bad)
-    T.delete('1.0', END)
 ######################################################################################################
 ######################################### interface Area of the project ##############################
 
-root = Tk()
 
-topFrame = Frame(root)
-topFrame.pack()
-bottomFrame = Frame(root)
-bottomFrame.pack(side=BOTTOM)
+def interfaceFunc():
+    root = Tk()
 
-startbtn = Button(topFrame,text="Start",fg="white",bg="green",command=startBtnAction,height=5,width=20)
-stopbtn = Button(topFrame,text="Stop",bg="red",fg="white",command=stopBtnAction,height=5,width=20)
-addKeywordBtn = Button(bottomFrame,text="Add Keywords",bg="blue",fg="white",command=addKeywordBtnAction,height=5,width=20)
+    topFrame = Frame(root)
+    topFrame.pack()
+    bottomFrame = Frame(root)
+    bottomFrame.pack(side=BOTTOM)
 
-startbtn.pack()
-stopbtn.pack()
-addKeywordBtn.pack()
+    startbtn = Button(topFrame,text="Start",fg="white",bg="green",command=startBtnAction,height=5,width=20)
+    stopbtn = Button(topFrame,text="Stop",bg="red",fg="white",command=stopBtnAction,height=5,width=20)
+    addKeywordBtn = Button(bottomFrame,text="Add Keywords",bg="blue",fg="white",command=lambda:addKeywordBtnAction(root),height=5,width=20)
+
+    startbtn.pack()
+    stopbtn.pack()
+    addKeywordBtn.pack()
 
 
-root.mainloop()
-
+    root.mainloop()
+######################################################################################################
+######################################################################################################
+######################################################################################################
+interfaceFunc()      #init the app
+######################################################################################################
+######################################################################################################
 ######################################################################################################
