@@ -10,6 +10,12 @@
 
 <ion-content padding>
 
+  <h3 style = "text-align: center;">Overall Results in Web</h3>
+<button ion-button color="primary" (click)="show()">Show Chart</button>
+<canvas #doughnutCanvas></canvas>
+<p id="ext">Extremely Bad Count</p><ion-input id="ex" type="text" name="ex" [(ngModel)]="ex" disabled ="true" ></ion-input>
+<p id="hxt">Highly Bad Count</p><ion-input id="hi" type="text" name="high" [(ngModel)]="high" disabled ="true" ></ion-input>
+<p id="bxt">Normal Bad Count</p><ion-input id="ba" type="text" name="bad" [(ngModel)]="bad" disabled ="true" ></ion-input>
 
 
 
@@ -34,7 +40,7 @@
                         url :
           </ion-col>
           <ion-col col-6>
-                      
+
           </ion-col>
         <ion-col col-12>
                         {{ user.url }}
@@ -44,10 +50,10 @@
 
         <ion-row>
         <ion-col col-6>
-                    howbad :
+                    Badness :
           </ion-col>
-        <ion-col col-6>
-                    {{ user.howbad }}
+        <ion-col col-6 style="color: red;">
+                    <b>{{ user.howbad }}</b>
         </ion-col>
 
 
