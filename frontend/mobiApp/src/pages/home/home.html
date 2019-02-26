@@ -2,16 +2,16 @@
 
   <ion-item>
     <ion-label floating>Username</ion-label>
-    <ion-input type="text" [(ngModel)]="uName"></ion-input>
+    <ion-input type="text" name="uName" [(ngModel)]="uName"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>Password</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
   </ion-item>
 
 </ion-list>
+  <ion-input id="dis" type="text" name="dis" [(ngModel)]="dis" disabled ="true" ></ion-input>
 
-
-<button ion-button block (click)="login(uName)">Login</button>
+<button ion-button block (click)="login()">Login</button>
 <button ion-button color="secondary" clear (click)="signup()" class="btnsignup">Sign Up</button>

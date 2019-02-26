@@ -11,7 +11,7 @@ from firebase import firebase
 # from search_google import api
 
 #####firebase db connection
-'''
+
 firebase = firebase.FirebaseApplication('https://cybrogx-1543512333299.firebaseio.com/', None)
 
 
@@ -46,8 +46,8 @@ for x in bax:
     f = firebase.get('/badWords/bad',x)
     badList.append(f[1])
 
-
-
+print(userNameList())
+'''
 
 
 ######################################################################################################
@@ -160,6 +160,7 @@ def doItForAllUsers():
 
 #################################################################################################################
 ######################################## button function area of the project ####################################
+'''
 def goback(window):#back function
     window.destroy()
     interfaceFunc()
@@ -278,3 +279,4 @@ interfaceFunc()      #init the app
 ######################################################################################################
 ######################################################################################################
 ######################################################################################################
+'''
