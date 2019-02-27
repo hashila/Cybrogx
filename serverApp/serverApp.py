@@ -6,13 +6,17 @@ import json
 import requests
 import pandas as pd
 from firebase import firebase
-# from lib.google_search_results import GoogleSearchResults
 
-# from search_google import api
 
-#####firebase db connection
+#firebase connnection
 
 firebase = firebase.FirebaseApplication('https://cybrogx-1543512333299.firebaseio.com/', None)
+
+
+
+
+
+
 
 
 ########################################## firebase CRUD operations area #########################################
@@ -46,8 +50,8 @@ for x in bax:
     f = firebase.get('/badWords/bad',x)
     badList.append(f[1])
 
-print(userNameList())
-'''
+
+
 
 
 ######################################################################################################
@@ -112,7 +116,7 @@ def mainAnnalyser(stng):
             countb = countb + stng.count(badword)
     fullcnt = (countex*1000) + (counth*200) + countb
     howbad = (fullcnt/len(stng.split(" ")))*100
-    return howbad
+    return [howbad,countex,counth,countb]
 
 
 
@@ -124,15 +128,34 @@ def postResult(fullName,userName):
     searchList = search(fullName)
     for url in searchList:
         try:
-            stng = scraper(url)
+            fireUser = firebase.get('/news/'+userName,None)
+            if fireUser == None:
+                stng = scraper(url)
+            else:
+                for f in fireUser:
+                    id = f
+                    ff = firebase.get('/news/'+userName+'/'+id,None)
+                    urllst = ff['url']
+                    for u in urllst:
+                        if u == url:
+                            continue
+                        else:
+                            stng = scraper(url)
         except requests.exceptions.RequestException as e:  # This is the correct syntax
             print(e)
         howbadinweb = mainAnnalyser(stng)
-        content={
-            "url" : url,
-            "howbad" : howbadinweb
-        }
-        firebase.post('/news/'+userName,content)
+        if howbadinweb[0] <= 10:
+            continue
+        else:
+            content={
+                "url" : url,
+                "howbad" : howbadinweb[0],
+                "extremecount" : howbadinweb[1],
+                "highcount" : howbadinweb[2],
+                "badcount" : howbadinweb[3],
+            }
+            firebase.post('/news/'+userName,content)
+
 
 def doItForUser(username):
     userName = username
@@ -154,8 +177,10 @@ def doItForAllUsers():
             print("key error")
 
     print("done")
-'''
-# doItForAllUsers()
+
+doItForAllUsers()
+
+
 
 
 #################################################################################################################
