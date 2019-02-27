@@ -36,7 +36,7 @@ export class HomePage {
           this.users = this.afd.list('/profile/'+ this.uName).valueChanges();
           this.users.forEach(element => {
           pwd=element[0]["password"];
-          console.log(pwd);
+          
 
             if(pwd==this.password){
               this.navCtrl.push(UseraccountPage,{data:this.uName});

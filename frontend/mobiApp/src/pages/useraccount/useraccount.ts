@@ -27,9 +27,7 @@ export class UseraccountPage {
     // console.log(this.name);
     this.users = afd.list('/profile/'+ uName).valueChanges();
 
-    this.users.forEach(element => {
-            console.log(element[0]["address"]);
-        });
+    
 
   }
 
